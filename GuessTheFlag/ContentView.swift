@@ -18,7 +18,6 @@ struct ContentView: View {
     
     var body: some View {
         ZStack{
-//            Color.blue.edgesIgnoringSafeArea(.all)
             LinearGradient(gradient: Gradient(colors: [.blue, .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
             
             VStack(spacing: 30) {
@@ -29,7 +28,7 @@ struct ContentView: View {
                         .foregroundColor(.white)
                         .font(.largeTitle)
                         .fontWeight(.black)
-                }
+                }.frame(width: 250)
                 
                 ForEach(0 ..< 3) { number in
                     Button(action: {
@@ -44,11 +43,16 @@ struct ContentView: View {
                     }
                 }
                 
-                Text("Your score now is \(userScore)")
-                    .foregroundColor(.white)
-                    .fontWeight(.black)
-                
-                Spacer()
+                VStack(spacing: 5) {
+                    Text("Your score now is")
+                        .foregroundColor(.white)
+                        .fontWeight(.black)
+                    Text("\(userScore)")
+                        .foregroundColor(.white)
+                        .font(.largeTitle)
+                        .fontWeight(.black)
+                }
+//                Spacer()
             }
         }
         .alert(isPresented: $showingScore) {
@@ -59,12 +63,14 @@ struct ContentView: View {
     }
     
     func flagTapped(_ number: Int) {
-           if number == correctAnswer {
-               scoreTitle = "Correct"
-           } else {
-               scoreTitle = "Wrong"
-           }
-               showingScore = true
+        if number == correctAnswer {
+            scoreTitle = "Correct"
+            userScore += 1
+        } else {
+            scoreTitle = "You're fuckin' idiot, that's the flag of \(countries[number])"
+            userScore -= 1
+        }
+            showingScore = true
     }
     
     func askQuestion() {
