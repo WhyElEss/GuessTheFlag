@@ -43,8 +43,8 @@ struct ContentView: View {
                     }
                 }
                 
-                VStack(spacing: 5) {
-                    Text("Your score now is")
+                HStack {
+                    Text("Your score:")
                         .foregroundColor(.white)
                         .fontWeight(.black)
                     Text("\(userScore)")
