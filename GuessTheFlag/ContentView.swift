@@ -110,7 +110,7 @@ struct ContentView: View {
 
                         // project 6 - challenge 1
                         Text("+1")
-                            .font(.largeTitle)
+                            .font(.headline)
                             .foregroundColor(animatingIncreaseScore ? .green : .clear)
                             .opacity(animatingIncreaseScore ? 0 : 1)
                             .offset(x: 0, y: animatingIncreaseScore ? -50 : -20)
@@ -118,7 +118,7 @@ struct ContentView: View {
                         // project 6 - challenge 3
                         Text("-1")
                             .foregroundColor(animatingDecreaseScore ? .red : .clear)
-                            .font(.largeTitle)
+                            .font(.headline)
                             .opacity(animatingDecreaseScore ? 0 : 1)
                             .offset(x: 0, y: animatingDecreaseScore ? 50 : 20)
                     }
